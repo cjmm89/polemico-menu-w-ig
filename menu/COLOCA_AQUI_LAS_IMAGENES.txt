@@ -1,0 +1,1 @@
+Coloca aquí menu-1.jpg, menu-2.jpg, etc. Luego actualiza config.js si cambian los nombres.

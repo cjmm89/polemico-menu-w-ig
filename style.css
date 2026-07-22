@@ -1,0 +1,118 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #f4efe6;
+  color: #111111;
+  font-family: "Barlow", Arial, sans-serif;
+}
+
+.page {
+  width: min(100%, 760px);
+  margin: 0 auto;
+  min-height: 100vh;
+  padding-bottom: 42px;
+}
+
+.hero {
+  text-align: center;
+  padding: 34px 20px 22px;
+}
+
+.logo {
+  display: block;
+  width: min(220px, 60vw);
+  max-height: 120px;
+  object-fit: contain;
+  margin: 0 auto 22px;
+}
+
+.eyebrow {
+  margin: 0 0 5px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2.2px;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(44px, 12vw, 76px);
+  line-height: .95;
+  font-weight: 800;
+}
+
+.intro {
+  max-width: 430px;
+  margin: 14px auto 0;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.menu-container {
+  display: grid;
+  gap: 14px;
+  padding: 0 14px;
+}
+
+.menu-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 6px 24px rgba(0,0,0,.10);
+  background: #ffffff;
+}
+
+.actions {
+  display: grid;
+  gap: 12px;
+  padding: 24px 14px 4px;
+}
+
+.btn {
+  display: flex;
+  min-height: 56px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 700;
+  transition: transform .15s ease, opacity .15s ease;
+}
+
+.btn:active {
+  transform: scale(.98);
+}
+
+.btn-primary {
+  background: #111111;
+  color: #ffffff;
+}
+
+.btn-secondary {
+  border: 2px solid #111111;
+  color: #111111;
+  background: transparent;
+}
+
+footer {
+  text-align: center;
+  padding: 26px 15px 0;
+  font-weight: 700;
+  opacity: .55;
+}
+
+.empty-state {
+  margin: 10px 14px;
+  padding: 28px 20px;
+  text-align: center;
+  border: 2px dashed rgba(0,0,0,.2);
+  border-radius: 14px;
+}
