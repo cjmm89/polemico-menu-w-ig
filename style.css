@@ -17,12 +17,13 @@ body {
   display: grid;
   gap: 14px;
   padding: 20px 14px 24px;
+}
 
-  background-image: url("fondo-menu.png");
+.content-background {
+  background-image: url("fondo-polemico.jpg");
   background-size: cover;
   background-position: top center;
   background-repeat: repeat-y;
-
 }
 
 .page {
