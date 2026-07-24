@@ -21,7 +21,7 @@ body {
 
 .content-background {
   background-image: url("fondo-polemico.jpg");
-  background-size: cover;
+  background-size: 100% auto;
   background-position: top center;
   background-repeat: repeat-y;
 }
