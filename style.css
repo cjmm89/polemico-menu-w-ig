@@ -7,15 +7,22 @@ html {
 }
 
 body {
-    margin: 0;
+  margin: 0;
+  background: #f4efe6;
   color: #111111;
   font-family: "Barlow", Arial, sans-serif;
+}
+
+.menu-container {
+  display: grid;
+  gap: 14px;
+  padding: 20px 14px 24px;
 
   background-image: url("fondo-menu.png");
   background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-position: top center;
+  background-repeat: repeat-y;
+
 }
 
 .page {
