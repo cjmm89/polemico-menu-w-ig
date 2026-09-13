@@ -8,8 +8,7 @@
 */
 window.POLEMICO_CONFIG = {
   menuImages: [
-    "menu/menu-1.jpg",
-    "menu/menu-2.jpg"
+    "menu/menu-1.jpg"
   ],
 
   // Formato internacional, SOLO números. Ejemplo Venezuela: 584121234567
@@ -18,5 +17,5 @@ window.POLEMICO_CONFIG = {
   // Mensaje que aparecerá automáticamente al abrir WhatsApp.
   whatsappMessage: "Hola Polemico, quiero hacer un pedido ",
 
-  instagramUrl: "https://www.instagram.com/polemico_bar/"
+  instagramUrl: "https://www.instagram.com/polemico.pork/"
 };
