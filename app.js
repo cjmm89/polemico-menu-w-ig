@@ -40,9 +40,5 @@
     });
   }
 
-  const number = String(config.whatsappNumber || "").replace(/\D/g, "");
-  const message = encodeURIComponent(config.whatsappMessage || "Hola, quiero hacer un pedido.");
-  whatsappBtn.href = `https://wa.me/${number}?text=${message}`;
-
   instagramBtn.href = config.instagramUrl || "#";
 })();

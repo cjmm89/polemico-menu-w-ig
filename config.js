@@ -25,10 +25,5 @@ window.POLEMICO_CONFIG = {
     }
   ],
 
-  //whatsappNumber: "584248623696",
-
-  // Mensaje que aparecerá automáticamente al abrir WhatsApp.
-  //whatsappMessage: "Hola Polemico, quiero hacer un pedido ",
-
   instagramUrl: "https://www.instagram.com/polemico.pork/"
 };
