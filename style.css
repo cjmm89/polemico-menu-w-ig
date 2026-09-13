@@ -45,8 +45,8 @@ body {
 
 .logo {
   display: block;
-  width: min(220px, 60vw);
-  max-height: 120px;
+  width: min(320px, 80vw);
+  max-height: 160px;
   object-fit: contain;
   margin: 0 auto 22px;
 }
@@ -68,8 +68,9 @@ h1 {
 .intro {
   max-width: 430px;
   margin: 14px auto 0;
-  font-size: 32px;
+  font-size: 28px;
   line-height: 1.45;
+  text-align: center;
 }
 
 .menu-container {
