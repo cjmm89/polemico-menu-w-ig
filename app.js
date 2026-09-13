@@ -1,7 +1,28 @@
 (() => {
   const config = window.POLEMICO_CONFIG || {};
   const container = document.getElementById("menu-container");
-  const whatsappBtn = document.getElementById("whatsapp-btn");
+  const whatsappContainer = document.getElementById("whatsapp-buttons");
+  const locations = Array.isArray(config.whatsappLocations)
+    ? config.whatsappLocations
+    : [];
+
+  locations.forEach(location => {
+    const number = String(location.number || "").replace(/\D/g, "");
+    const message = encodeURIComponent(
+      location.message || "Hola Polemico, quiero hacer un pedido."
+    );
+
+    const btn = document.createElement("a");
+
+    btn.className = "btn btn-primary";
+    btn.target = "_blank";
+    btn.rel = "noopener noreferrer";
+
+    btn.href = `https://wa.me/${number}?text=${message}`;
+    btn.textContent = `Pedir en ${location.name}`;
+
+    whatsappContainer.appendChild(btn);
+  });
   const instagramBtn = document.getElementById("instagram-btn");
 
   const images = Array.isArray(config.menuImages) ? config.menuImages : [];

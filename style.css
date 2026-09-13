@@ -6,6 +6,11 @@ html {
   scroll-behavior: smooth;
 }
 
+#whatsapp-buttons {
+  display: grid;
+  gap: 12px;
+}
+
 body {
   margin: 0;
   background: #f4efe6;
@@ -78,7 +83,7 @@ h1 {
   width: 100%;
   height: auto;
   border-radius: 14px;
-  box-shadow: 0 6px 24px rgba(0,0,0,.10);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, .10);
   background: #ffffff;
 }
 
@@ -124,6 +129,6 @@ footer {
   margin: 10px 14px;
   padding: 28px 20px;
   text-align: center;
-  border: 2px dashed rgba(0,0,0,.2);
+  border: 2px dashed rgba(0, 0, 0, .2);
   border-radius: 14px;
 }
