@@ -16,12 +16,12 @@ window.POLEMICO_CONFIG = {
     {
       name: "en Sede Catia",
       number: "584241431487",
-      message: "Hola Polemico Pork, quiero hacer un pedido en su Sede de Catia"
+      message: "Hola te saludamos desde Polemico Pork, estamos listos para recibir tu pedido"
     },
     {
       name: "un Delivery desde Altamira",
       number: "584248623696",
-      message: "Hola Polemico Pork, quiero hacer un pedido para delivery"
+      message: "Hola te saludamos desde Polemico Pork, estamos listos para recibir tu pedido"
     }
   ],
 
