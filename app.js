@@ -19,7 +19,7 @@
     btn.rel = "noopener noreferrer";
 
     btn.href = `https://wa.me/${number}?text=${message}`;
-    btn.textContent = `Pedir en ${location.name}`;
+    btn.textContent = `Pedir ${location.name}`;
 
     whatsappContainer.appendChild(btn);
   });

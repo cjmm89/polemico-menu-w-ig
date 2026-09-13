@@ -14,12 +14,12 @@ window.POLEMICO_CONFIG = {
   // Formato internacional, SOLO números. Ejemplo Venezuela: 584121234567
   whatsappLocations: [
     {
-      name: "Sede Catia",
+      name: "en Sede Catia",
       number: "584241431487",
       message: "Hola Polemico Pork, quiero hacer un pedido en su Sede de Catia"
     },
     {
-      name: "Delivery Altamira",
+      name: "un Delivery desde Altamira",
       number: "584248623696",
       message: "Hola Polemico Pork, quiero hacer un pedido para delivery"
     }
