@@ -14,7 +14,7 @@ window.POLEMICO_CONFIG = {
   // Formato internacional, SOLO números. Ejemplo Venezuela: 584121234567
   whatsappLocations: [
     {
-      name: "Sede de Catia",
+      name: "en Sede de Catia",
       number: "584241431487",
       message: "Hola te saludamos desde Polemico Pork, estamos listos para recibir tu pedido",
       schedule: {
@@ -28,7 +28,7 @@ window.POLEMICO_CONFIG = {
       }
     },
     {
-      name: "Delivery Sede Altamira",
+      name: "Delivery en Sede de Altamira",
       number: "584248623696",
       message: "Hola te saludamos desde Polemico Pork, estamos listos para recibir tu pedido",
       schedule: {

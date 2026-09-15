@@ -157,7 +157,7 @@
       btn.target = "_blank";
       btn.rel = "noopener noreferrer";
 
-      btn.textContent = `Pedir en ${location.name}`;
+      btn.textContent = `Pedir ${location.name}`;
 
     } else {
       const nextOpening = getNextOpening(location);
