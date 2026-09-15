@@ -16,7 +16,7 @@ window.POLEMICO_CONFIG = {
     {
       name: "Sede de Catia",
       number: "584241431487",
-      message: "Hola te saludamos desde Polemico Pork, estamos listos para recibir tu pedido"
+      message: "Hola te saludamos desde Polemico Pork, estamos listos para recibir tu pedido",
       schedule: {
         0: ["12:00", "21:00"],
         1: null,
@@ -30,7 +30,7 @@ window.POLEMICO_CONFIG = {
     {
       name: "Delivery Sede Altamira",
       number: "584248623696",
-      message: "Hola te saludamos desde Polemico Pork, estamos listos para recibir tu pedido"
+      message: "Hola te saludamos desde Polemico Pork, estamos listos para recibir tu pedido",
       schedule: {
         0: ["11:30", "20:00"], // domingo
         1: null,               // lunes cerrado
