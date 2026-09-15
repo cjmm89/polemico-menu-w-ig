@@ -133,3 +133,11 @@ footer {
   border: 2px dashed rgba(0, 0, 0, .2);
   border-radius: 14px;
 }
+
+.btn-closed {
+  background: #777777;
+  color: #ffffff;
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.75;
+}
