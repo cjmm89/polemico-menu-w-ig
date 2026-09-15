@@ -19,7 +19,7 @@ window.POLEMICO_CONFIG = {
       message: "Hola te saludamos desde Polemico Pork, estamos listos para recibir tu pedido"
     },
     {
-      name: "un Delivery desde Altamira",
+      name: "Delivery Sede Altamira",
       number: "584248623696",
       message: "Hola te saludamos desde Polemico Pork, estamos listos para recibir tu pedido"
     }
