@@ -1,30 +1,83 @@
 (() => {
   const config = window.POLEMICO_CONFIG || {};
-  const container = document.getElementById("menu-container");
-  const whatsappContainer = document.getElementById("whatsapp-buttons");
 
-  const locations = Array.isArray(config.whatsappLocations)
-    ? config.whatsappLocations
+  const menuContainer = document.getElementById("menu-container");
+  const whatsappContainer = document.getElementById("whatsapp-buttons");
+  const instagramBtn = document.getElementById("instagram-btn");
+
+  // =====================================================
+  // MENÚ
+  // =====================================================
+
+  const images = Array.isArray(config.menuImages)
+    ? config.menuImages
     : [];
 
-  // Hora actual de Caracas
-  const caracasNow = new Date(
-    new Date().toLocaleString("en-US", {
-      timeZone: "America/Caracas"
-    })
-  );
+  images.forEach((src, index) => {
+    const img = document.createElement("img");
 
-  const currentDay = caracasNow.getDay();
-  const currentMinutes =
-    caracasNow.getHours() * 60 + caracasNow.getMinutes();
+    img.className = "menu-image";
+    img.src = src;
+    img.alt = `Menú Polemico ${index + 1}`;
+    img.loading = index === 0 ? "eager" : "lazy";
+
+    menuContainer.appendChild(img);
+  });
+
+  // =====================================================
+  // HORA DE CARACAS
+  // =====================================================
+
+  const formatter = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/Caracas",
+    weekday: "short",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false
+  });
+
+  const parts = formatter.formatToParts(new Date());
+
+  const getPart = type =>
+    parts.find(part => part.type === type)?.value;
+
+  const weekday = getPart("weekday");
+  const hour = Number(getPart("hour"));
+  const minute = Number(getPart("minute"));
+
+  const dayMap = {
+    Sun: 0,
+    Mon: 1,
+    Tue: 2,
+    Wed: 3,
+    Thu: 4,
+    Fri: 5,
+    Sat: 6
+  };
+
+  const currentDay = dayMap[weekday];
+  const currentMinutes = hour * 60 + minute;
+
+  // =====================================================
+  // FUNCIONES DE HORARIO
+  // =====================================================
 
   function timeToMinutes(time) {
     const [hours, minutes] = time.split(":").map(Number);
     return hours * 60 + minutes;
   }
 
+  function formatTime(time) {
+    const [hours, minutes] = time.split(":").map(Number);
+
+    const period = hours >= 12 ? "PM" : "AM";
+    const displayHour = hours % 12 || 12;
+
+    return `${displayHour}:${String(minutes).padStart(2, "0")} ${period}`;
+  }
+
   function getNextOpening(location) {
-    const dayNames = [
+    const days = [
       "domingo",
       "lunes",
       "martes",
@@ -34,20 +87,45 @@
       "sábado"
     ];
 
-    for (let i = 1; i <= 7; i++) {
-      const nextDay = (currentDay + i) % 7;
-      const hours = location.schedule[nextDay];
+    const todaySchedule = location.schedule[currentDay];
 
-      if (hours) {
+    // Si todavía abre hoy
+    if (todaySchedule) {
+      const opening = timeToMinutes(todaySchedule[0]);
+
+      if (currentMinutes < opening) {
         return {
-          day: i === 1 ? "mañana" : `el ${dayNames[nextDay]}`,
-          time: hours[0]
+          text: "hoy",
+          time: todaySchedule[0]
+        };
+      }
+    }
+
+    // Buscar siguiente día abierto
+    for (let offset = 1; offset <= 7; offset++) {
+      const nextDay = (currentDay + offset) % 7;
+      const schedule = location.schedule[nextDay];
+
+      if (schedule) {
+        return {
+          text: offset === 1
+            ? "mañana"
+            : `el ${days[nextDay]}`,
+          time: schedule[0]
         };
       }
     }
 
     return null;
   }
+
+  // =====================================================
+  // BOTONES DE WHATSAPP
+  // =====================================================
+
+  const locations = Array.isArray(config.whatsappLocations)
+    ? config.whatsappLocations
+    : [];
 
   locations.forEach(location => {
     const btn = document.createElement("a");
@@ -57,16 +135,17 @@
     let isOpen = false;
 
     if (todaySchedule) {
-      const openMinutes = timeToMinutes(todaySchedule[0]);
-      const closeMinutes = timeToMinutes(todaySchedule[1]);
+      const opening = timeToMinutes(todaySchedule[0]);
+      const closing = timeToMinutes(todaySchedule[1]);
 
       isOpen =
-        currentMinutes >= openMinutes &&
-        currentMinutes < closeMinutes;
+        currentMinutes >= opening &&
+        currentMinutes < closing;
     }
 
     if (isOpen) {
-      const number = String(location.number || "").replace(/\D/g, "");
+      const number = String(location.number || "")
+        .replace(/\D/g, "");
 
       const message = encodeURIComponent(
         location.message ||
@@ -74,58 +153,42 @@
       );
 
       btn.className = "btn btn-primary";
+      btn.href = `https://wa.me/${number}?text=${message}`;
       btn.target = "_blank";
       btn.rel = "noopener noreferrer";
 
-      btn.href =
-        `https://wa.me/${number}?text=${message}`;
-
       btn.textContent = `Pedir en ${location.name}`;
+
     } else {
+      const nextOpening = getNextOpening(location);
+
       btn.className = "btn btn-closed";
+      btn.removeAttribute("href");
 
-      if (todaySchedule) {
-        const openingMinutes =
-          timeToMinutes(todaySchedule[0]);
-
-        // Todavía no ha abierto hoy
-        if (currentMinutes < openingMinutes) {
-          btn.textContent =
-            `${location.name} · Cerrado · Abrimos hoy a las ${todaySchedule[0]}`;
-        } else {
-          const next = getNextOpening(location);
-
-          btn.textContent = next
-            ? `${location.name} · Cerrado · Abrimos ${next.day} a las ${next.time}`
-            : `${location.name} · Cerrado`;
-        }
+      if (nextOpening) {
+        btn.innerHTML = `
+          <span>
+            ${location.name} · Cerrado<br>
+            <small>
+              Nos vemos ${nextOpening.text} a las
+              ${formatTime(nextOpening.time)}
+            </small>
+          </span>
+        `;
       } else {
-        const next = getNextOpening(location);
-
-        btn.textContent = next
-          ? `${location.name} · Cerrado · Abrimos ${next.day} a las ${next.time}`
-          : `${location.name} · Cerrado`;
+        btn.textContent = `${location.name} · Cerrado`;
       }
     }
 
     whatsappContainer.appendChild(btn);
   });
-  const instagramBtn = document.getElementById("instagram-btn");
 
-  const images = Array.isArray(config.menuImages) ? config.menuImages : [];
+  // =====================================================
+  // INSTAGRAM
+  // =====================================================
 
-  if (images.length === 0) {
-    container.innerHTML = '<div class="empty-state">El menú se está actualizando.</div>';
-  } else {
-    images.forEach((src, index) => {
-      const img = document.createElement("img");
-      img.className = "menu-image";
-      img.src = src;
-      img.alt = `Menú Polemico ${index + 1}`;
-      img.loading = index === 0 ? "eager" : "lazy";
-      container.appendChild(img);
-    });
+  if (instagramBtn) {
+    instagramBtn.href = config.instagramUrl || "#";
   }
 
-  instagramBtn.href = config.instagramUrl || "#";
 })();

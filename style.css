@@ -135,9 +135,17 @@ footer {
 }
 
 .btn-closed {
-  background: #777777;
+  background: #555555;
   color: #ffffff;
-  cursor: not-allowed;
+  cursor: default;
   pointer-events: none;
-  opacity: 0.75;
+  opacity: 0.85;
+  text-align: center;
+}
+
+.btn-closed small {
+  display: block;
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: 500;
 }
