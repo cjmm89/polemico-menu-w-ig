@@ -32,13 +32,13 @@ window.POLEMICO_CONFIG = {
       number: "584248623696",
       message: "Hola te saludamos desde Polemico Pork, estamos listos para recibir tu pedido",
       schedule: {
-        0: ["11:30", "20:00"], // domingo
+        0: ["11:30", "19:00"], // domingo
         1: null,               // lunes cerrado
-        2: ["11:30", "20:00"], // martes
-        3: ["11:30", "20:00"], // miércoles
-        4: ["11:30", "20:00"], // jueves
-        5: ["12:00", "21:00"], // viernes
-        6: ["12:00", "21:00"]  // sábado
+        2: ["11:30", "19:00"], // martes
+        3: ["11:30", "19:00"], // miércoles
+        4: ["11:30", "19:00"], // jueves
+        5: ["12:00", "19:00"], // viernes
+        6: ["12:00", "19:00"]  // sábado
       }
     }
   ],
